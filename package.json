@@ -12,13 +12,11 @@
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json --fix",
-    "precommit": "lint-staged",
-    "prepare": "npm run build"
+    "prepare": "husky install && npm run build"
   },
   "lint-staged": {
     "*.ts": [
-      "npm run lint",
-      "git add"
+      "npm run lint"
     ]
   },
   "repository": {
@@ -29,6 +27,8 @@
   "author": "Shingo Watanabe",
   "license": "ISC",
   "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
     "prettier": "^2.6.2",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
