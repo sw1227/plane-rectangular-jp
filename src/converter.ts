@@ -34,6 +34,8 @@ export class PlaneRectangularConverter {
     )
   }
 
+  // 平面直角座標 -> 緯度経度
+  // https://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/algorithm/xy2bl/xy2bl.htm
   XYToLngLat(xy: { x: number, y: number }): LngLat {
     const { x, y } = xy
 
@@ -57,6 +59,8 @@ export class PlaneRectangularConverter {
     return { lng: rad2deg(longitude), lat: rad2deg(latitude) }
   }
 
+  // 緯度経度 -> 平面直角座標
+  // https://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/algorithm/bl2xy/bl2xy.htm
   lngLatToXY(lngLat: LngLat): { x: number, y: number } {
     const { lng, lat } = lngLat
     const phi = deg2rad(lat)
