@@ -1,7 +1,7 @@
 {
   "name": "plane-rectangular-jp",
   "version": "1.0.1",
-  "description": "",
+  "description": "Converter of {lng, lat} <-> {x, y} (Plane rectangular coordinate system)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -12,8 +12,12 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sw1227/plane-rectangular-jp.git"
+  },
   "keywords": [],
-  "author": "",
+  "author": "Shingo Watanabe",
   "license": "ISC",
   "devDependencies": {
     "typescript": "^4.6.4"
