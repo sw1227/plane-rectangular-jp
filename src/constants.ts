@@ -7,7 +7,7 @@ export const GEO_CONSTANTS = { m0, a, F, n } as const
 
 // 平面直角座標系（平成十四年国土交通省告示第九号）
 // https://www.gsi.go.jp/LAW/heimencho.html
-export const ORIGINS: { [system: string]: { lng: number, lat: number } } = {
+export const ORIGINS: { [system: string]: { lng: number; lat: number } } = {
   // 長崎県 鹿児島県のうち北方北緯32度南方北緯27度西方東経128度18分東方東経130度を境界線とする区域内（奄美群島は東経130度13分までを含む。)にあるすべての島、小島、環礁及び岩礁
   I: { lng: 129 + 30 / 60, lat: 33 },
   // 福岡県　佐賀県　熊本県　大分県　宮崎県　鹿児島県（I系に規定する区域を除く。)
