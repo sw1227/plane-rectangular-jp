@@ -16,6 +16,7 @@ export class PlaneRectangularConverter {
   A_: number
   S_: number
 
+  // 座標系原点を指定して初期化
   constructor(origin: LngLat) {
     // 座標系原点
     this.phi0 = deg2rad(origin.lat)
