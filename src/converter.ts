@@ -18,7 +18,7 @@ export class PlaneRectangularConverter {
 
   // 座標系原点を指定して初期化
   constructor(origin: LngLat) {
-    // 座標系原点
+    // 座標系原点 [rad]
     this.phi0 = deg2rad(origin.lat)
     this.lambda0 = deg2rad(origin.lng)
     // 定数から計算できる量
@@ -83,6 +83,7 @@ export class PlaneRectangularConverter {
         ((2 * Math.sqrt(GEO_CONSTANTS.n)) / (1 + GEO_CONSTANTS.n)) *
           Math.atanh(((2 * Math.sqrt(GEO_CONSTANTS.n)) / (1 + GEO_CONSTANTS.n)) * Math.sin(phi)),
     )
+    // tslint:disable-next-line:variable-name
     const t_ = Math.sqrt(1 + t * t)
 
     const xi2 = Math.atan2(t, lambdaC) // # [rad]
