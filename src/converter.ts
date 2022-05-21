@@ -1,11 +1,6 @@
 import { GEO_CONSTANTS } from './constants'
 import { deg2rad, rad2deg, arrayA, arrayAlpha, arrayBeta, arrayDelta } from './util'
 
-type LngLat = {
-  lng: number
-  lat: number
-}
-
 export class PlaneRectangularConverter {
   private phi0: number // Radian
   private lambda0: number // Radian
@@ -16,8 +11,11 @@ export class PlaneRectangularConverter {
   private A_: number
   private S_: number
 
-  // 座標系原点を指定して初期化
-  constructor(origin: LngLat) {
+  /**
+   * 座標系原点を指定して初期化
+   * @param origin: { lng, lat } - 座標系原点の経緯度[deg]
+   */
+  constructor(origin: { lng: number; lat: number }) {
     // 座標系原点 [rad]
     this.phi0 = deg2rad(origin.lat)
     this.lambda0 = deg2rad(origin.lng)
@@ -35,13 +33,13 @@ export class PlaneRectangularConverter {
         }, 0))
   }
 
-  get origin(): LngLat {
+  get origin(): { lng: number; lat: number } {
     return { lng: rad2deg(this.lambda0), lat: rad2deg(this.phi0) }
   }
 
   // 平面直角座標 -> 緯度経度
   // https://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/algorithm/xy2bl/xy2bl.htm
-  XYToLngLat(xy: { x: number; y: number }): LngLat {
+  XYToLngLat(xy: { x: number; y: number }): { lng: number; lat: number } {
     const { x, y } = xy
 
     const xi = (x + this.S_) / this.A_
@@ -74,7 +72,7 @@ export class PlaneRectangularConverter {
 
   // 緯度経度 -> 平面直角座標
   // https://vldb.gsi.go.jp/sokuchi/surveycalc/surveycalc/algorithm/bl2xy/bl2xy.htm
-  lngLatToXY(lngLat: LngLat): { x: number; y: number } {
+  lngLatToXY(lngLat: { lng: number; lat: number }): { x: number; y: number } {
     const { lng, lat } = lngLat
     const phi = deg2rad(lat)
     const lambda = deg2rad(lng)
