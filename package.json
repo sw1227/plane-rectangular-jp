@@ -1,6 +1,6 @@
 {
   "name": "plane-rectangular-jp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Converter of {lng, lat} <-> {x, y} (Plane rectangular coordinate system)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
