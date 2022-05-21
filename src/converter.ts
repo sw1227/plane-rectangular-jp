@@ -7,14 +7,14 @@ type LngLat = {
 }
 
 export class PlaneRectangularConverter {
-  phi0: number // Radian
-  lambda0: number // Radian
-  arrayA: number[]
-  arrayAlpha: number[]
-  arrayBeta: number[]
-  arrayDelta: number[]
-  A_: number
-  S_: number
+  private phi0: number // Radian
+  private lambda0: number // Radian
+  private arrayA: number[]
+  private arrayAlpha: number[]
+  private arrayBeta: number[]
+  private arrayDelta: number[]
+  private A_: number
+  private S_: number
 
   // 座標系原点を指定して初期化
   constructor(origin: LngLat) {
@@ -33,6 +33,10 @@ export class PlaneRectangularConverter {
         this.arrayA.slice(1).reduce((prev, A, idx) => {
           return prev + A * Math.sin(2 * (idx + 1) * this.phi0)
         }, 0))
+  }
+
+  get origin(): LngLat {
+    return { lng: rad2deg(this.lambda0), lat: rad2deg(this.phi0) }
   }
 
   // 平面直角座標 -> 緯度経度
